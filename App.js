@@ -1,20 +1,14 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-
 import { styles } from './styles';
 
 import { FeedScreenWrapper } from './Screens/FeedScreen';
-// import { ProfileStack } from './Screens/ProfilesScreen';
-import { EditScreen } from './Screens/ProfileEditScreen';
+import { ProfileStack } from './Screens/ProfilesScreen';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-const Tabt = createMaterialTopTabNavigator();
 
 function ChatScreen() {
   return (
@@ -24,46 +18,12 @@ function ChatScreen() {
   );
 }
 
-function PreviewScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Preview Screen</Text>
-    </View>
-  );
-}
-
-function ProfileStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Preview"
-        component={PreviewScreen}
-        options={({ navigation }) => ({
-          title: 'Preview',
-          headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
-              <Text style={styles.headerButton}>Edit</Text>
-            </TouchableOpacity>
-          ),
-        })}
-      />
-      <Stack.Screen
-        name="Edit"
-        component={EditScreen}
-        options={({ navigation }) => ({
-          title: 'Edit',
-          headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Preview')}>
-              <Text style={styles.headerButton}>Preview</Text>
-            </TouchableOpacity>
-          ),
-        })}
-      />
-    </Stack.Navigator>
-  );
-}
 const App = () => {
+
+
+
   return (
+
     <NavigationContainer>
 
       <Tab.Navigator

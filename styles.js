@@ -47,9 +47,9 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   image: {
-    width: 105,
-    height: 105,
-    // borderRadius:10,
+    width: '105%',
+    height: '105%',
+    borderRadius:10,
   },
   imageBox: {
     flexDirection: 'row',
@@ -60,12 +60,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     height: 255,
     alignSelf: 'stretch', // evenly space images vertically
   },
       
   imageContainer: {
+    borderRadius:10,
+    backgroundColor: 'rgba(211, 211, 211, 0.6)',
     width: '30%',
     aspectRatio: 1,
     margin: 5,
@@ -82,6 +84,58 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  closeIconContainer: {
+    position: 'absolute',
+    top: -5,
+    right: -5,
+    zIndex: 1,
+  },
+  closeIconCircle: {
+    backgroundColor: 'white',
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: 'grey',
+    borderWidth: 1,
+  },
+  aboutMeContainer: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    marginHorizontal: 20,
+  },
+  aboutMeTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    marginLeft:5,
+
+  },
+  aboutMeInput: {
+    height: 100,
+    borderWidth: 1,
+    borderColor: 'lightgrey',
+    borderRadius: 5,
+    padding: 10,
+    textAlignVertical: 'top',
+  },
 });
 
-export { styles };
+const previewStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    padding: 20,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    marginRight: 10,
+  },
+});
+
+export { styles, previewStyles };

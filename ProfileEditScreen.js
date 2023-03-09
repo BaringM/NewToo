@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView, Alert,  TouchableWithoutFeedback, Keyboard, } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { MaterialIcons } from '@expo/vector-icons'; // import MaterialIcons from expo vector-icons library
+import { MaterialIcons } from '@expo/vector-icons';
 import { styles } from '../styles';
 
 function EditScreen({ navigation }) {
   const [images, setImages] = useState([]);
+  const [aboutMe, setAboutMe] = useState('');
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -15,20 +16,33 @@ function EditScreen({ navigation }) {
       quality: 1,
     });
 
-    if (!result.canceled) {
+    if (!result.cancelled) {
       setImages([...images, result.uri]);
     }
   };
 
-  return (
-    <View style={styles.Editcontainer}>
+  const removeImage = (index) => {
+    const imagesCopy = [...images];
+    imagesCopy.splice(index, 1);
+    setImages(imagesCopy);
+  };
 
+  return (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <View style={styles.Editscreenbackground}>
+    <View style={styles.Editcontainer}>
       <View style={styles.imageBox}>
-        
         {[1, 2, 3, 4, 5, 6].map((item, index) => (
           <TouchableOpacity key={index} style={styles.imageContainer} onPress={pickImage}>
             {images[index] ? (
-              <Image source={{ uri: images[index] }} style={styles.image} />
+              <>
+                <TouchableOpacity style={styles.closeIconContainer} onPress={() => removeImage(index)}>
+                  <View style={styles.closeIconCircle}>
+                    <MaterialIcons name="close" size={20} color="grey" />
+                  </View>
+                </TouchableOpacity>
+                <Image source={{ uri: images[index] }} style={styles.image} />
+              </>
             ) : (
               <MaterialIcons name="add" size={40} color="grey" />
             )}
@@ -36,6 +50,20 @@ function EditScreen({ navigation }) {
         ))}
       </View>
     </View>
+    <View style={styles.aboutMeContainer}>
+      <Text style={styles.aboutMeTitle}>About Me</Text>
+      <TextInput
+            style={styles.aboutMeInput}
+            placeholder="Write something about yourself..."
+            placeholderTextColor="grey"
+            multiline
+            maxLength={250}
+            value={aboutMe}
+            onChangeText={(text) => setAboutMe(text)}
+          />
+      </View>
+    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
