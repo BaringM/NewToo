@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, TextInput } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 import users from './users';
@@ -8,6 +8,7 @@ const Tab = createMaterialTopTabNavigator();
 
 const Card = ({ users, userIndex, onSwipeLeft, onSwipeRight }) => {
   const userData = users[userIndex];
+ 
 
   if (!userData) {
     return null;
@@ -16,6 +17,7 @@ const Card = ({ users, userIndex, onSwipeLeft, onSwipeRight }) => {
   const { name, image, imagetwo, imagethree, bio } = userData;
 
   return (
+
     <View style={styles.card}>
       <ScrollView contentContainerStyle={styles.cardInner}>
         <ImageBackground
@@ -36,7 +38,7 @@ const Card = ({ users, userIndex, onSwipeLeft, onSwipeRight }) => {
             uri: imagetwo,
           }}
           style={styles.imagetwo}
-        ></ImageBackground>
+        ></ImageBackground> 
         <ImageBackground
           source={{
             uri: imagethree,
@@ -77,7 +79,7 @@ function FeedScreenWrapper({ navigation }) {
     <View style={{ flex: 1 }}>
       <View style={styles.container}>
         {userIndex !== null && (
-          <View style={styles.nextCardContainer}>
+          <View>
             <Card
               users={users}
               userIndex={userIndex}
@@ -90,6 +92,7 @@ function FeedScreenWrapper({ navigation }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -146,12 +149,12 @@ cardInnerbio: {
   marginBottom:10,
   borderRadius:10,
   borderColor: 'grey',
-  backgroundColor: 'rgba(211, 211, 211, 0.6)',
+  backgroundColor: 'white',
 },
 
   card: {
       marginTop:60,
-      backgroundColor: '#FFF',
+      backgroundColor: 'lightgrey',
       overflow: 'hidden',
       borderRadius:10,
       width: '90%',
@@ -165,6 +168,10 @@ cardInnerbio: {
       shadowOpacity: 0.36,
       shadowRadius: 6.68,
       elevation: 11, 
+
+      borderColor: '#AFE1AF',
+      borderWidth: 4,
+      padding:2,
 
   },
 
@@ -194,32 +201,24 @@ cardInnerbio: {
   },
   buttonsContainer: {
     position: 'absolute',
-    bottom: 10,
-    left: -80,
+    bottom: 5,
+    left: -85,
     right: 0,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '140%',
+    width: '150%',
     overflow: 'hidden',
   },
   buttonWrapper: {
     borderRadius: 50,
     backgroundColor: 'white',
-    // borderWidth: 3,
     borderColor: 'white',
     width: 70,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  nextCardContainer: {
-    // width:'100%',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // position: 'absolute',
-  },
-
 });
 
 export { FeedScreenWrapper };

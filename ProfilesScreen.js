@@ -6,6 +6,7 @@ import { styles } from '../styles';
 import { Card } from './FeedScreen';
 
 const Stack = createStackNavigator();
+// PreviewScreen
 
 function PreviewScreen({ navigation }) {
   return (
@@ -19,6 +20,9 @@ function PreviewScreen({ navigation }) {
 }
 
 function ProfileStack() { 
+
+  
+
   return (
     <Stack.Navigator>
       <Stack.Screen

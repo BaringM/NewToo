@@ -5,7 +5,7 @@ export default [
       image:
       'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
       imagetwo:
-      'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
+      'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80',
       imagethree:
       'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
       bio: 'Activity, I like climbing and cycling user 1',
@@ -14,7 +14,7 @@ export default [
       id: '2',
       name: 'User 2',
       image:
-      'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
+      'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80',
       imagetwo:
       'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
       imagethree:
@@ -25,7 +25,7 @@ export default [
       id: '3',
       name: 'User 3',
       image:
-      'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
+      'https://images.pexels.com/photos/6942436/pexels-photo-6942436.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       imagetwo:
       'https://images.pexels.com/photos/2893685/pexels-photo-2893685.jpeg',
       imagethree:

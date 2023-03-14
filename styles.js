@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: 'white',
+    // borderWidth: 2,
+    // borderColor: 'white',
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     margin: 5,
     borderWidth: 3,
-    borderColor: 'grey',
+    borderColor: 'green',
     alignItems: 'center',
     borderStyle: 'dashed',
     justifyContent: 'center',
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   aboutMeContainer: {
     backgroundColor: 'white',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     marginTop: 10,
     marginHorizontal: 20,
   },
@@ -122,6 +122,36 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlignVertical: 'top',
   },
+  root: { 
+    width: '100%',
+    flex: 1,
+    padding: 10,
+  },
+  input:{
+    margin: 10,
+    borderBottomColor: 'lightgrey',
+    borderBottomWidth: 1,
+  },
+  savebutton: {
+    backgroundColor: 'green',
+    height:25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    margin: 10,
+  },
+  signoutbutton: {
+    backgroundColor: 'green',
+    height: 30,
+    width: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    margin: 10,
+  },
+  picker: {
+    margin:10,
+  },
 });
 
 const previewStyles = StyleSheet.create({
@@ -136,6 +166,8 @@ const previewStyles = StyleSheet.create({
     borderRadius: 10,
     marginRight: 10,
   },
+  
+
 });
 
 export { styles, previewStyles };
