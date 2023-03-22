@@ -1,17 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, ScrollView, TextInput } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { FontAwesome } from '@expo/vector-icons';
-import users from './users';
+import { DataStore } from 'aws-amplify';
+import {User} from '../src/models';
+
+// import users from './users';
 
 const Tab = createMaterialTopTabNavigator();
 
-const Card = ({ users, userIndex, onSwipeLeft, onSwipeRight }) => {
+const Card = ({users, userIndex, onSwipeLeft, onSwipeRight }) => {
+
   const userData = users[userIndex];
- 
 
   if (!userData) {
-    return null;
+    return null;  
   }
 
   const { name, image, imagetwo, imagethree, bio } = userData;
@@ -63,6 +66,16 @@ const Card = ({ users, userIndex, onSwipeLeft, onSwipeRight }) => {
 };
 
 function FeedScreenWrapper({ navigation }) {
+
+  const[users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchedUsers = async () => {
+      setUsers(await DataStore.query(User));
+    };
+    fetchedUsers();
+  }, []);
+
   const [userIndex, setUserIndex] = useState(0);
 
   const onSwipeLeft = (user) => {
@@ -78,7 +91,7 @@ function FeedScreenWrapper({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.container}>
-        {userIndex !== null && (
+        {userIndex !== null && userIndex < users.length ? (
           <View>
             <Card
               users={users}
@@ -86,6 +99,10 @@ function FeedScreenWrapper({ navigation }) {
               onSwipeLeft={onSwipeLeft}
               onSwipeRight={onSwipeRight}
             />
+          </View>
+        ) : (
+          <View>
+            <Text>Sorry, no more users</Text>
           </View>
         )}
       </View>
@@ -141,6 +158,7 @@ cardInner: {
   marginTop:10,
   padding: 10,
   borderRadius:10,
+  alignItems: 'center', 
 },
 
 cardInnerbio: {
@@ -148,8 +166,10 @@ cardInnerbio: {
   padding: 10,
   marginBottom:10,
   borderRadius:10,
+  width: 330,
   borderColor: 'grey',
   backgroundColor: 'white',
+  
 },
 
   card: {
